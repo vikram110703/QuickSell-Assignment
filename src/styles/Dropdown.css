@@ -1,0 +1,60 @@
+.header {
+    position: relative; /* Make the parent container position relative */
+  }
+  
+  .dropdown-menu {
+    min-width: 15rem;
+    position: absolute; 
+    top: 100%;
+    left: 1rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding-inline: 1rem;
+    padding-block:0.7rem;
+    z-index: 100;
+  }
+  
+  
+  .submenu {
+    min-width: 6.2rem;
+    position: absolute;
+    left: 56%; 
+    top: 40%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    /* padding: 10px; */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+  }
+  .submenu_2 {
+    min-width: 6.2rem;
+    position: absolute;
+    left: 56%; 
+    top: 79%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+    /* padding: 10px; */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+  }
+  
+  .submenu div {
+    padding: 8px 12px;
+  } 
+  .submenu_2 div {
+    padding: 8px 12px;
+  } 
+  
+  .submenu div:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  } 
+  .submenu_2 div:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  } 
+  
