@@ -25,6 +25,7 @@ export const Home = () => {
     const [loading, setLoading] = useState(true);
     const [ready, setReady] = useState(false);
     const [sortedTasks, setSortedTasks] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,6 +40,7 @@ export const Home = () => {
                 console.log("Error in fetching data from backend ", error);
                 setLoading(false);
                 setReady(true);
+                setError(error);
             }
         };
 
@@ -104,7 +106,12 @@ export const Home = () => {
         setOrderOpen(false);
     };
 
-    if (loading || !ready) return <div style={{width:"100%",height:"100vh",display:'flex',justifyContent:"center",alignItems:"center"}}>Loading...</div>;
+    if (loading || !ready) return <div style={{ width: "100%", height: "100vh", display: 'flex', justifyContent: "center", alignItems: "center" }}>Loading...</div>;
+    if (error) {
+        return <div style={{ width: "100%", height: "100vh", display: 'flex', justifyContent: "center", alignItems: "center" }}>
+                 Error in fetching data from backend. Please try again later.
+               </div>;
+    }
 
     return (
         <div className='container'>
@@ -125,7 +132,8 @@ export const Home = () => {
                 <div className='flexBox'>
                     {sortedTasks.map((groupedItem) => (
                         <div key={groupedItem.user?.id || groupedItem.status || groupedItem.priority}>
-                            {group === "User" && groupedItem.user&& (
+                            {/* This is for Column */}
+                            {group === "User" && groupedItem.user && (
                                 <div>
                                     <Task_user_info user={groupedItem.user} taskCount={groupedItem.count} />
                                 </div>
@@ -140,6 +148,7 @@ export const Home = () => {
                                     <Task_priority_card priority={groupedItem.priority} taskCount={groupedItem.count} />
                                 </div>
                             )}
+                                {/* This is for Column items */}
                             {groupedItem.tasks.map((task) => (
                                 <Task_Card key={task.id} task={task} />
                             ))}
